@@ -1,0 +1,23 @@
+// Program:
+
+int analogPin = A2;      // wiper
+int ledPin = 11;
+int val = 0;
+
+void setup()
+{
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600); // baudrate
+}
+
+void loop()
+{
+  val = analogRead(analogPin);
+  int level = map(val, 0, 1023, 0, 255);
+  analogWrite(ledPin, level);
+
+  Serial.print("Pot = ");        // main part: potentiometer value
+  Serial.print(val);             // just declaring value
+  Serial.print("\t brightness = ");  // main part: brightness value
+  Serial.println(level);
+}
